@@ -18,47 +18,43 @@
 }
 
 @mixin border-radius($radius: false, $topleft: false, $topright: false, $bottomright: false, $bottomleft: false) {
-	@if $css3 {
-		@if type_of($radius) == number {
-			-webkit-border-radius: $radius;
-			-moz-border-radius: $radius;
-			border-radius: $radius;
-		}
-		@if type_of($topleft) == number {
-			-webkit-border-top-left-radius: $topleft;
-			-moz-border-radius-topleft: $topleft;
-			border-top-left-radius: $topleft;
-		}
-		@if type_of($topright) == number {
-			-webkit-border-top-right-radius: $topright;
-			-moz-border-radius-topright: $topright;
-			border-top-right-radius: $topright;
-		}
-		@if type_of($bottomright) == number {
-			-webkit-border-bottom-right-radius: $bottomright;
-			-moz-border-radius-bottomright: $bottomright;
-			border-bottom-right-radius: $bottomright;
-		}
-		@if type_of($bottomleft) == number {
-			-webkit-border-bottom-left-radius: $bottomleft;
-			-moz-border-radius-bottomleft: $bottomleft;
-			border-bottom-left-radius: $bottomleft;
-		}
+	@if type_of($radius) == number {
+		-webkit-border-radius: $radius;
+		   -moz-border-radius: $radius;
+		        border-radius: $radius;
+	}
+	@if type_of($topleft) == number {
+		-webkit-border-top-left-radius: $topleft;
+		   -moz-border-radius-topleft: $topleft;
+		        border-top-left-radius: $topleft;
+	}
+	@if type_of($topright) == number {
+		-webkit-border-top-right-radius: $topright;
+		   -moz-border-radius-topright: $topright;
+		        border-top-right-radius: $topright;
+	}
+	@if type_of($bottomright) == number {
+		-webkit-border-bottom-right-radius: $bottomright;
+		   -moz-border-radius-bottomright: $bottomright;
+		        border-bottom-right-radius: $bottomright;
+	}
+	@if type_of($bottomleft) == number {
+		-webkit-border-bottom-left-radius: $bottomleft;
+		   -moz-border-radius-bottomleft: $bottomleft;
+		        border-bottom-left-radius: $bottomleft;
 	}
 }
 
 @mixin box-shadow($x, $y, $blur, $color, $inset: false) {
-	@if $css3 {
-		@if $inset {
-			-webkit-box-shadow: inset $x $y $blur $color;
-			   -moz-box-shadow: inset $x $y $blur $color;
-			        box-shadow: inset $x $y $blur $color;
-		}
-		@else {
-			-webkit-box-shadow: $x $y $blur $color;
-			   -moz-box-shadow: $x $y $blur $color;
-			        box-shadow: $x $y $blur $color;
-		}
+	@if $inset {
+		-webkit-box-shadow: inset $x $y $blur $color;
+		   -moz-box-shadow: inset $x $y $blur $color;
+		        box-shadow: inset $x $y $blur $color;
+	}
+	@else {
+		-webkit-box-shadow: $x $y $blur $color;
+		   -moz-box-shadow: $x $y $blur $color;
+		        box-shadow: $x $y $blur $color;
 	}
 }
 
@@ -69,17 +65,15 @@
 }
 
 @mixin transition($property: false, $time: 1s, $ease: linear) {
-	@if $css3 {
-		@if $property == none {
-			-webkit-transition: none;
-			   -moz-transition: none;
-			     -o-transition: none;
-		}
-		@else {
-			-webkit-transition: $property $time $ease;
-			   -moz-transition: $property $time $ease;
-			     -o-transition: $property $time $ease;
-		}
+	@if $property == none {
+		-webkit-transition: none;
+		   -moz-transition: none;
+		     -o-transition: none;
+	}
+	@else {
+		-webkit-transition: $property $time $ease;
+		   -moz-transition: $property $time $ease;
+		     -o-transition: $property $time $ease;
 	}
 }
 
@@ -90,9 +84,7 @@
 	background-image: url('../images/' + $file_name);
 	
 	@media (-webkit-min-device-pixel-ratio: 2) {
-		& {
-			background-image: url('../images/' + $retina_name) !important;
-			-webkit-background-size: $width $height;
-		}
+		background-image: url('../images/' + $retina_name) !important;
+		-webkit-background-size: $width $height;
 	}
 }
