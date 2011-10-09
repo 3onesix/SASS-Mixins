@@ -1,3 +1,9 @@
+@mixin vendor-property($vendors, $property, $value) {
+	@each $vendor in $vendors {
+		#{$vendor}-#{$property}: $value;
+	}
+}
+
 @mixin position($top: false, $left: false, $bottom: false, $right: false, $zindex: false) {
 	position: absolute;
 	@if type_of($top) == number {
@@ -19,9 +25,8 @@
 
 @mixin border-radius($radius: false, $topleft: false, $topright: false, $bottomright: false, $bottomleft: false) {
 	@if type_of($radius) == number {
-		-webkit-border-radius: $radius;
-		   -moz-border-radius: $radius;
-		        border-radius: $radius;
+		@include vendor-property(-webkit -moz, border-radius, $radius);
+		border-radius: $radius;
 	}
 	@if type_of($topleft) == number {
 		-webkit-border-top-left-radius: $topleft;
@@ -47,33 +52,26 @@
 
 @mixin box-shadow($x, $y, $blur, $color, $inset: false) {
 	@if $inset {
-		-webkit-box-shadow: inset $x $y $blur $color;
-		   -moz-box-shadow: inset $x $y $blur $color;
-		        box-shadow: inset $x $y $blur $color;
+		@include vendor-property(-webkit -moz, box-shadow, inset $x $y $blur $color);
+		box-shadow: inset $x $y $blur $color;
 	}
 	@else {
-		-webkit-box-shadow: $x $y $blur $color;
-		   -moz-box-shadow: $x $y $blur $color;
-		        box-shadow: $x $y $blur $color;
+		@include vendor-property(-webkit -moz, box-shadow, $x $y $blur $color);
+		box-shadow: $x $y $blur $color;
 	}
 }
 
 @mixin box-sizing($value) {
-	-webkit-box-sizing: $value;
-	   -moz-box-sizing: $value;
-	        box-sizing: $value;
+	@include vendor-property(-webkit -moz, box-sizing, $value);
+	box-sizing: $value;
 }
 
 @mixin transition($property: false, $time: 1s, $ease: linear) {
 	@if $property == none {
-		-webkit-transition: none;
-		   -moz-transition: none;
-		     -o-transition: none;
+		@include vendor-property(-webkit -moz -o, transition, none);
 	}
 	@else {
-		-webkit-transition: $property $time $ease;
-		   -moz-transition: $property $time $ease;
-		     -o-transition: $property $time $ease;
+		@include vendor-property(-webkit -moz -o, transition, $property $time $ease);
 	}
 }
 
