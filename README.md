@@ -9,6 +9,11 @@
 /* Example */
 @include border-radius(3px);
 @include border-radius($topleft: 3px);
+
+/* Output */
+-webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+        border-radius: 3px;
 ```
 
 ### Supports
@@ -26,6 +31,11 @@
 
 /* Example */
 @include box-shadow(0, 0, 10px, rgba(0, 0, 0, .5));
+
+/* Output */
+-webkit-box-shadow: 0 0 10px rgba(0, 0, 0 .5);
+   -moz-box-shadow: 0 0 10px rgba(0, 0, 0 .5);
+        box-shadow: 0 0 10px rgba(0, 0, 0 .5);
 ```
 
 ### Supports
@@ -43,6 +53,11 @@
 
 /* Example */
 @include box-sizing(border-box);
+
+/* Output */
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+        box-sizing: border-box;
 ```
 
 ### Supports
@@ -60,6 +75,12 @@
 
 /* Example */
 @include transition(width, .35s);
+
+/* Output */
+-webkit-transition: width .35s linear;
+   -moz-transition: width .35s linear;
+     -o-transition: width .35s linear;
+        transition: width .35s linear;
 ```
 
 ### Supports
