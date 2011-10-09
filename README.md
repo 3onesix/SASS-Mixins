@@ -50,6 +50,7 @@
 * Webkit
 * Mozilla
 * Opera
+* Internet Explorer 8+
 
 ## Transitions
 
