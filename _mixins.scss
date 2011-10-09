@@ -38,10 +38,10 @@
 
 @mixin box-shadow($x: 0, $y: 0, $blur: 0, $color: transparent, $inset: false) {
 	@if $inset {
-		@include experimental-property(-webkit -moz -o, box-shadow, inset $x $y $blur $color);
+		@include experimental-property(-webkit -moz, box-shadow, inset $x $y $blur $color);
 	}
 	@else {
-		@include experimental-property(-webkit -moz -o, box-shadow, $x $y $blur $color);
+		@include experimental-property(-webkit -moz, box-shadow, $x $y $blur $color);
 	}
 }
 
