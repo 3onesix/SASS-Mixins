@@ -1,4 +1,4 @@
-@mixin vendor-property($vendors, $property, $value) {
+@mixin experimental-property($vendors, $property, $value) {
 	@each $vendor in $vendors {
 		#{$vendor}-#{$property}: $value;
 	}
@@ -38,20 +38,20 @@
 
 @mixin box-shadow($x: 0, $y: 0, $blur: 0, $color: transparent, $inset: false) {
 	@if $inset {
-		@include vendor-property(-webkit -moz -o, box-shadow, inset $x $y $blur $color);
+		@include experimental-property(-webkit -moz -o, box-shadow, inset $x $y $blur $color);
 	}
 	@else {
-		@include vendor-property(-webkit -moz -o, box-shadow, $x $y $blur $color);
+		@include experimental-property(-webkit -moz -o, box-shadow, $x $y $blur $color);
 	}
 }
 
 @mixin box-sizing($value) {
-	@include vendor-property(-webkit -moz -o, border-sizing, $value);
+	@include experimental-property(-webkit -moz -o, border-sizing, $value);
 }
 
 @mixin border-radius($radius: false, $topleft: false, $topright: false, $bottomright: false, $bottomleft: false) {
 	@if type_of($radius) == number {
-		@include vendor-property(-webkit -moz, border-radius, $radius);
+		@include experimental-property(-webkit -moz, border-radius, $radius);
 	}
 	@if type_of($topleft) == number {
 		-webkit-border-top-left-radius: $topleft;
@@ -76,15 +76,15 @@
 }
 
 @mixin box-sizing($value) {
-	@include vendor-property(-webkit -moz, box-sizing, $value);
+	@include experimental-property(-webkit -moz, box-sizing, $value);
 }
 
 @mixin transition($property: false, $time: 1s, $ease: linear) {
 	@if $property == none {
-		@include vendor-property(-webkit -moz -o, transition, none);
+		@include experimental-property(-webkit -moz -o, transition, none);
 	}
 	@else {
-		@include vendor-property(-webkit -moz -o, transition, $property $time $ease);
+		@include experimental-property(-webkit -moz -o, transition, $property $time $ease);
 	}
 }
 
@@ -102,7 +102,7 @@
 
 @mixin background-clip($clip)
 {
-	@include vendor-property(-webkit -moz -o, background-clip, $value);
+	@include experimental-property(-webkit -moz -o, background-clip, $value);
 }
 
 @mixin radial-gradient($firstStopColor, $secondStopColor, $origin: center, $firstStopPosition: 0%, $secondStopPosition: 100%, $shape: ellipse, $size: cover)
@@ -149,5 +149,5 @@
 }
 
 @mixin user-select($value) {
-	@include vendor-property(-webkit -moz -o, user-select, $value);
+	@include experimental-property(-webkit -moz -o, user-select, $value);
 }
