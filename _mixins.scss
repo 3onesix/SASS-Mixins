@@ -2,6 +2,7 @@
 	@each $vendor in $vendors {
 		#{$vendor}-#{$property}: $value;
 	}
+	#{$property}: $value;
 }
 
 @mixin position($top: false, $left: false, $bottom: false, $right: false, $zindex: false) {
@@ -23,10 +24,34 @@
 	}
 }
 
+@mixin size($width: false, $height: false) {
+	content: '';
+
+	@if type_of($width) == number {
+		width: $width;
+	}
+	
+	@if type_of($height) == number {
+		height: $height;
+	}
+}
+
+@mixin box-shadow($x: 0, $y: 0, $blur: 0, $color: transparent, $inset: false) {
+	@if $inset {
+		@include vendor-property(-webkit -moz -o, box-shadow, inset $x $y $blur $color);
+	}
+	@else {
+		@include vendor-property(-webkit -moz -o, box-shadow, $x $y $blur $color);
+	}
+}
+
+@mixin box-sizing($value) {
+	@include vendor-property(-webkit -moz -o, border-sizing, $value);
+}
+
 @mixin border-radius($radius: false, $topleft: false, $topright: false, $bottomright: false, $bottomleft: false) {
 	@if type_of($radius) == number {
 		@include vendor-property(-webkit -moz, border-radius, $radius);
-		border-radius: $radius;
 	}
 	@if type_of($topleft) == number {
 		-webkit-border-top-left-radius: $topleft;
@@ -50,20 +75,8 @@
 	}
 }
 
-@mixin box-shadow($x, $y, $blur, $color, $inset: false) {
-	@if $inset {
-		@include vendor-property(-webkit -moz, box-shadow, inset $x $y $blur $color);
-		box-shadow: inset $x $y $blur $color;
-	}
-	@else {
-		@include vendor-property(-webkit -moz, box-shadow, $x $y $blur $color);
-		box-shadow: $x $y $blur $color;
-	}
-}
-
 @mixin box-sizing($value) {
 	@include vendor-property(-webkit -moz, box-sizing, $value);
-	box-sizing: $value;
 }
 
 @mixin transition($property: false, $time: 1s, $ease: linear) {
@@ -85,4 +98,56 @@
 		background-image: url('../images/' + $retina_name) !important;
 		-webkit-background-size: $width $height;
 	}
+}
+
+@mixin background-clip($clip)
+{
+	@include vendor-property(-webkit -moz -o, background-clip, $value);
+}
+
+@mixin radial-gradient($firstStopColor, $secondStopColor, $origin: center, $firstStopPosition: 0%, $secondStopPosition: 100%, $shape: ellipse, $size: cover)
+{	
+	$kind: $shape $size;
+	$firstStop: $firstStopColor $firstStopPosition;
+	$secondStop: $secondStopColor $secondStopPosition;
+	
+	background-color: $firstStopColor;
+	background-image: -moz-radial-gradient($origin, $kind, $firstStop, $secondStop);
+	background-image: -webkit-radial-gradient($origin, $kind, $firstStop, $secondStop);
+	background-image: -o-radial-gradient($origin, $kind, $firstStop, $secondStop);
+	background-image: -ms-radial-gradient($origin, $kind, $firstStop, $secondStop);
+	background-image: radial-gradient($origin, $kind, $firstStop, $secondStop)
+}
+
+@mixin linear-gradient($first, $last) {
+	background: $first; /* Old browsers */
+	background: -moz-linear-gradient(top, $first 0%, $last 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$first), color-stop(100%,$last)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, $first 0%,$last 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, $first 0%,$last 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, $first 0%,$last 100%); /* IE10+ */
+	background: linear-gradient(top, $first 0%,$last 100%); /* W3C */
+}
+
+@function columns($count: 1, $padding: 0) {
+	$column-width: 60px !default;
+	
+	$value: $count * $column-width - $padding;
+	@return $value;
+}
+
+@mixin clearfix()
+{
+	&:after {
+		clear: both;
+		content: ".";
+		display: block;
+		height: 0;
+		visibility: hidden;
+		font-size: 0;
+	}
+}
+
+@mixin user-select($value) {
+	@include vendor-property(-webkit -moz -o, user-select, $value);
 }
