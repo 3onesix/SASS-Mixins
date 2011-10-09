@@ -3,7 +3,10 @@
 ## Border Radius
 
 ```scss
+/* Mixin */
 @include border-radius($radius, $topleft, $topright, $bottomright, $bottomleft);
+
+/* Example */
 @include border-radius(3px);
 @include border-radius($topleft: 3px);
 ```
@@ -11,21 +14,30 @@
 ## Box Shadow
 
 ```scss
+/* Mixin */
 @include box-shadow($x, $y, $blur, $color, $inset: false);
+
+/* Example */
 @include box-shadow(0, 0, 10px, rgba(0, 0, 0, .5));
 ```
 
 ## Box Sizing
 
 ```scss
+/* Mixin */
 @include box-sizing($value);
+
+/* Example */
 @include box-sizing(border-box);
 ```
 
 ## Transitions
 
 ```scss
+/* Mixin */
 @include transition($property: false, $time: 1s, $ease: linear);
+
+/* Example */
 @include transition(width, .35s);
 ```
 
@@ -34,6 +46,9 @@
 ## Retina Graphics
 
 ```scss
+/* Mixin */
 @include hires-graphic($file, $type, $width, $height);
+
+/* Example */
 @include hires-graphic('logo', 'png', 200px, 120px);
 ```
