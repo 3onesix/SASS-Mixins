@@ -11,6 +11,13 @@
 @include border-radius($topleft: 3px);
 ```
 
+### Supports
+
+* Webkit
+* Mozilla
+* Opera
+* Internet Explorer 9+
+
 ## Box Shadow
 
 ```scss
@@ -20,6 +27,13 @@
 /* Example */
 @include box-shadow(0, 0, 10px, rgba(0, 0, 0, .5));
 ```
+
+### Supports
+
+* Webkit
+* Mozilla
+* Opera
+* Internet Explorer 9+
 
 ## Box Sizing
 
@@ -31,6 +45,12 @@
 @include box-sizing(border-box);
 ```
 
+### Supports
+
+* Webkit
+* Mozilla
+* Opera
+
 ## Transitions
 
 ```scss
@@ -40,6 +60,30 @@
 /* Example */
 @include transition(width, .35s);
 ```
+
+### Supports
+
+* Webkit
+* Mozilla
+* Opera
+
+## Linear Gradient
+
+```scss
+/* Mixin */
+@include linear-gradient($first, $last);
+
+/* Example */
+@include linear-gradient(#000, #111);
+```
+
+### Supports
+
+* Webkit
+* Mozilla
+* Opera
+* Internet Explorer 10+
+* Internet Explorer 6-9
 
 # Other
 
