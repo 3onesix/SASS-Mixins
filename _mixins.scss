@@ -102,7 +102,7 @@
 
 @mixin background-clip($clip)
 {
-	@include experimental-property(-webkit -moz -o, background-clip, $value);
+	@include experimental-property(-webkit -moz -o, background-clip, $clip);
 }
 
 @mixin radial-gradient($firstStopColor, $secondStopColor, $origin: center, $firstStopPosition: 0%, $secondStopPosition: 100%, $shape: ellipse, $size: cover)
