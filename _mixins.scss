@@ -5,6 +5,14 @@
 	#{$property}: $value;
 }
 
+@mixin sprite($file, $row:1, $col:1, $width: 16px, $height: 16px)
+{
+	width: $width;
+	height: $height;
+	background-position: $row * $width $col*$height;
+	background-image: url($file);
+}
+
 @mixin position($top: false, $left: false, $bottom: false, $right: false, $zindex: false) {
 	position: absolute;
 	@if type_of($top) == number {
