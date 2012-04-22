@@ -127,7 +127,7 @@
 	background-image: radial-gradient($origin, $kind, $firstStop, $secondStop)
 }
 
-@mixin linear-gradient($first, $last) {
+@mixin linear-gradient-legacy($first, $last) {
 	background: $first; /* Old browsers */
 	background: -moz-linear-gradient(top, $first 0%, $last 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$first), color-stop(100%,$last)); /* Chrome,Safari4+ */
@@ -136,6 +136,41 @@
 	background: -ms-linear-gradient(top, $first 0%,$last 100%); /* IE10+ */
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$first}', endColorstr='#{$last}',GradientType=0); /*IE6-9 */
 	background: linear-gradient(top, $first 0%,$last 100%); /* W3C */
+}
+
+@mixin linear-gradient($colors, $stops, $direction: top) {
+	@if type-of($colors) != list {
+		@include linear-gradient-legacy($colors, $stops);
+	}
+	@else {
+		$firstColor: '';
+		$lastColor: '';
+		$ci: 1;
+		$list: 0;
+		@each $color in $colors {
+			@if $ci == 1 {
+				$firstColor: $color;
+			}
+			@if $ci + 1 == length($colors) {
+				$lastColor: $color;
+			}
+			$list_item: join($color, nth($stops, $ci), space);
+			@if $list == 0 {
+				$list: $list_item;
+			}
+			@else {
+				$list: $list, $list_item;
+			}
+			$ci: $ci + 1;
+		}
+		background: $firstColor; /* Old browsers */
+		background: -moz-linear-gradient($direction, $list); /* FF3.6+ */
+		background: -webkit-linear-gradient($direction, $list); /* Chrome10+,Safari5.1+ */
+		background: -ms-linear-gradient($direction, $list); /* Opera11.10+ */
+		background: -o-linear-gradient($direction, $list); /* IE10+ */
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$firstColor}', endColorstr='#{$lastColor}',GradientType=0); /*IE6-9 */
+		background: linear-gradient($direction, $list); /* W3C */
+	}
 }
 
 @function columns($count: 1, $padding: 0) {
