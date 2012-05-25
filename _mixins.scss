@@ -51,7 +51,8 @@
 }
 
 @mixin box-sizing($value) {
-	@include experimental-property(-webkit -moz -o, border-sizing, $value);
+	@warn "box-sizing mixin has been deprecated as it is well supported without prefixes.";
+	box-sizing: $value;
 }
 
 @mixin border-radius($radius: false, $topleft: false, $topright: false, $bottomright: false, $bottomleft: false) {
