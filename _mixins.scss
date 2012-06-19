@@ -5,6 +5,11 @@
 	#{$property}: $value;
 }
 
+/* Support (No IE 8) */
+@mixin background-scale($original_width, $original_height, $new_width) {
+	background-size: $new_width, ($original_height / $original_width) * $new_width;
+}
+
 @mixin position($top: false, $left: false, $bottom: false, $right: false, $zindex: false) {
 	position: absolute;
 	@if type_of($top) == number {
