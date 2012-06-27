@@ -10,6 +10,23 @@
 	background-size: $new_width, ($original_height / $original_width) * $new_width;
 }
 
+@mixin selection($backgroundColor, $textColor, $opacity: 0.8) {
+	::-moz-selection {
+		background: rgba($backgroundColor, $opacity);
+		color: $textColor;
+	}
+	
+	::-webkit-selection {
+		background: rgba($backgroundColor, $opacity);
+		color: $textColor;
+	}
+	
+	::selection {
+		background: rgba($backgroundColor, $opacity);
+		color: $textColor;
+	}	
+}
+
 @mixin position($top: false, $left: false, $bottom: false, $right: false, $zindex: false) {
 	position: absolute;
 	@if type_of($top) == number {
