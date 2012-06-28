@@ -5,9 +5,13 @@
 	#{$property}: $value;
 }
 
+@function scale($original_width, $original_height, $new_width) {
+	@return ($original_height / $original_width) * $new_width;
+}
+
 /* Support (No IE 8) */
 @mixin background-scale($original_width, $original_height, $new_width) {
-	background-size: $new_width, ($original_height / $original_width) * $new_width;
+	background-size: $new_width, scale($original_height, $original_width, $new_width);
 }
 
 @mixin selection($backgroundColor, $textColor, $opacity: 0.8) {
