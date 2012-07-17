@@ -119,6 +119,18 @@
 		background-image: url('../images/' + $retina_name) !important;
 		@include experimental-property(-webkit, background-size, $width $height);
 	}
+	@media (-moz-min-device-pixel-ratio: 2) {
+		background-image: url('../images/' + $retina_name) !important;
+		@include experimental-property(-webkit, background-size, $width $height);
+	}
+	@media (-o-min-device-pixel-ratio: 2) {
+		background-image: url('../images/' + $retina_name) !important;
+		@include experimental-property(-webkit, background-size, $width $height);
+	}
+	@media (min-device-pixel-ratio: 2) {
+		background-image: url('../images/' + $retina_name) !important;
+		@include experimental-property(-webkit, background-size, $width $height);
+	}
 }
 
 @mixin sprite($file, $type, $row:1, $col:1, $width: 16px, $height: 16px, $retina: false, $sprite_width: '', $sprite_height: '')
