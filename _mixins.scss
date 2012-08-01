@@ -78,7 +78,7 @@
 }
 
 @mixin box-sizing($value) {
-	@warn "box-sizing mixin has been deprecated as it is well supported without prefixes.";
+	-moz-box-sizing: $value;
 	box-sizing: $value;
 }
 
